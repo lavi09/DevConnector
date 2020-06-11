@@ -1,13 +1,19 @@
-const express = require ('express');
+const express = require('express');
 //importing express
-const mongoose = require ('mongoose');
+const mongoose = require('mongoose');
 //library that talk to mongodb
+const bodyparser = require('body-parser');
 const users = require('./routes/api/users');
 const posts = require('./routes/api/posts');
 const profile = require('./routes/api/profile');
 
 const app=express();
 //creating instance of express
+
+//Body parser Configuaration
+app.use(bodyparser.urlencoded({extended: false}));
+app.use(bodyparser.json());
+
 
  //db config
  const db= require('./config/keys').mongoURI;
@@ -27,9 +33,9 @@ app.get('/', (req,res)=> res.send('Hello') );
 // every route will have request and respond
 
 //Use routes
-app.use('api/users', users );
-app.use('api/profile', profile );
-app.use('api/posts', posts );
+app.use('/api/users', users );
+app.use('/api/profile', profile );
+app.use('/api/posts', posts );
 
 const port = 8000;
 app.listen(port, () => console.log(`server running on port ${port}`))
