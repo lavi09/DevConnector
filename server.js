@@ -3,6 +3,7 @@ const express = require('express');
 const mongoose = require('mongoose');
 //library that talk to mongodb
 const bodyparser = require('body-parser');
+const passport = require('passport');
 const users = require('./routes/api/users');
 const posts = require('./routes/api/posts');
 const profile = require('./routes/api/profile');
@@ -10,10 +11,13 @@ const profile = require('./routes/api/profile');
 const app=express();
 //creating instance of express
 
-//Body parser Configuaration
+//Body parser configuaration
 app.use(bodyparser.urlencoded({extended: false}));
 app.use(bodyparser.json());
 
+//Passport configuration
+app.use(passport.initialize());
+require('./config/passport')(passport);
 
  //db config
  const db= require('./config/keys').mongoURI;
