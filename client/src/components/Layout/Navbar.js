@@ -35,7 +35,7 @@ import { Link } from "react-router-dom";
                 </Link>
               </li>
               <li className="nav-item">
-                <Link className="nav-link" to="/login.html">
+                <Link className="nav-link" to="/login">
                   Login
                 </Link>
               </li>
