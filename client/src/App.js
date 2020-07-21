@@ -6,10 +6,14 @@ import Landing from './components/Layout/Landing';
 import Register from './components/auth/Register';
 import Login from './components/auth/Login';
 import './App.css';
+import { Provider}from 'react-redux';
+import store from './store';
+
 
 class App extends Component {
   render() {
     return (
+      <Provider store={store}>
       <Router>
         <div className="App">
           <Navbar />
@@ -19,6 +23,7 @@ class App extends Component {
           <Footer />
         </div>
       </Router>
+      </Provider>
     );
   }
 }
